@@ -5,6 +5,8 @@ import {
     getLatLng,
 } from 'react-places-autocomplete';
 import "../styles/Autoselect.css";
+import { apiKey, originUrl } from '../App'
+import Wrapper from '../components/Content'
 
 export default class LocationSearchInput extends React.Component {
     constructor(props) {
@@ -20,9 +22,14 @@ export default class LocationSearchInput extends React.Component {
         geocodeByAddress(address)
             .then(results => getLatLng(results[0]))
             .then((latLng) => {
-                console.log('Success', latLng.lat)
-                console.log(address)
                 this.setState({ address });
+                fetch(originUrl + "lat=" + latLng.lat + "&lon=" + latLng.lng + apiKey)
+                    .then((respone) => {
+                        return respone.json()
+                    })
+                    .then((respData) => {
+                        console.log(respData)
+                    })
             })
             .catch(error => console.error('Error', error));
     };
