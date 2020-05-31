@@ -29,6 +29,8 @@ export default class LocationSearchInput extends React.Component {
                     })
                     .then((respData) => {
                         console.log(respData)
+                        console.log(address)
+                        console.log(latLng)
                     })
             })
             .catch(error => console.error('Error', error));
