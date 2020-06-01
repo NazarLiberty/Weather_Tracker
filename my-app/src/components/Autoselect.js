@@ -4,9 +4,8 @@ import {
     geocodeByAddress,
     getLatLng,
 } from 'react-places-autocomplete';
-import "../styles/Autoselect.css";
+import "../styles/Autoselect.scss";
 import { apiKey, originUrl } from '../App'
-import Wrapper from '../components/Content'
 
 export default class LocationSearchInput extends React.Component {
     constructor(props) {
@@ -28,9 +27,7 @@ export default class LocationSearchInput extends React.Component {
                         return respone.json()
                     })
                     .then((respData) => {
-                        console.log(respData)
-                        console.log(address)
-                        console.log(latLng)
+                        this.props.action(respData)
                     })
             })
             .catch(error => console.error('Error', error));
@@ -48,11 +45,12 @@ export default class LocationSearchInput extends React.Component {
                     <div>
                         <input
                             {...getInputProps({
+
                                 placeholder: 'Search Places ...',
-                                className: 'location-search-input',
+                                className: 'location-search-input current__input',
                             })}
                         />
-                        <div className="autocomplete-dropdown-container">
+                        <div className="autocomplete-dropdown-container current__dropdown">
                             {loading && <div>Loading...</div>}
                             {suggestions.map(suggestion => {
                                 const className = suggestion.active
@@ -60,8 +58,10 @@ export default class LocationSearchInput extends React.Component {
                                     : 'suggestion-item';
                                 // inline style for demonstration purpose
                                 const style = suggestion.active
-                                    ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                                    : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                                    ? {
+                                        backgroundColor: '#fafafa', cursor: 'pointer', padding: '5px 10px', borderRadius: "10px"
+                                    }
+                                    : { backgroundColor: '#ffffff', cursor: 'pointer', padding: '5px 10px', borderRadius: "10px" };
                                 return (
                                     <div
                                         {...getSuggestionItemProps(suggestion, {

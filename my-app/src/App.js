@@ -1,18 +1,18 @@
 import React from 'react';
-import './styles/App.css';
+import './styles/App.scss';
 import Wrapper from './components/Content'
-import LocationSearchInput from './components/Autoselect';
+
 export let apiKey = '&appid=ae64f4f04a5e48e2fc0edabf290d80d0'
 export let originUrl = 'https://api.openweathermap.org/data/2.5/onecall?'
-var moment = require('moment');
-
 
 export default function App() {
-    var day = moment.unix(1590663600);
-    console.log(day)
+    var timestamp = 1591120800;
+    var a = new Date(timestamp * 1000);
+    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var dayOfWeek = days[a.getDay()]
     return <>
         <Wrapper />
-        <LocationSearchInput />
+
     </>
 }
 
