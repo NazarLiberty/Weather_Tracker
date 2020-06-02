@@ -1,0 +1,113 @@
+.forecast{
+transform: translateY(550px);
+transition: 1.4s all ease;
+display: flex;
+background-color: rgba(99, 136, 185, 0.788);
+width: 100%;
+height: 35%;
+position: absolute;
+bottom: 0px;
+
+@media screen and (max-width:850px) {
+    height: 33%;
+ }
+@media screen and (max-width:578px) {
+    position: static;
+    transform: translateX(550px) translateY(0px);
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  &--active{
+    transform: translate(0px);
+}
+  &__today{
+      justify-content: center;
+      display: flex;
+      flex-wrap: wrap;
+      height: 100%;
+      width: 27%;
+      @media screen and (max-width:578px) {
+        width: 60%;
+      }
+  }
+  &__today-group{
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      @media screen and (max-width:578px) {
+        width: 100%
+      }
+  }
+  &__week-item{
+    padding: 25px 0px;
+      height: 100%;
+      width: 12%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      @media screen and (max-width:578px) {
+        width: 50%;
+        text-align: center;
+        border-top: 1px white solid;
+      }
+  }
+  &__day{
+      line-height: 120%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-transform: uppercase;
+      border-radius: 20px;
+      padding: 5px;
+      width: 45px;
+      font-size: 14px;
+      background-color: rgba(0, 0, 0, 0.356);
+      @media screen and (max-width:578px) {
+        width: 80px;
+      }
+      &--today{
+         
+          margin-bottom: 20px;
+          padding-top: 10px;
+          width: 75px;
+          max-height: 40px;
+      }
+  }
+  &__icon-b{
+      width: 80%;
+      max-height: 80px;
+      @media screen and (max-width:578px) {
+        width: 300px;
+        text-align: center;
+      }
+      &--today{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40%;
+          height: 100%;
+      }
+  }
+  &__icon{
+      object-fit: cover;
+      max-width: 100%;
+  }
+  &__temp{
+      font-size: 35px;
+      color: white;
+      @media screen and (max-width:578px) {
+        font-size: 50px;
+        text-align: center;
+      }
+      &--today{
+        padding-left: 15px;
+          font-size: 75px;
+      }
+  }
+}

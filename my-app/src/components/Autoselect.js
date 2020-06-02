@@ -18,18 +18,22 @@ export default class LocationSearchInput extends React.Component {
     };
 
     handleSelect = address => {
+
         geocodeByAddress(address)
             .then(results => getLatLng(results[0]))
             .then((latLng) => {
+                this.props.setLoader()
                 this.setState({ address });
                 fetch(originUrl + "lat=" + latLng.lat + "&lon=" + latLng.lng + apiKey)
                     .then((respone) => {
                         return respone.json()
                     })
                     .then((respData) => {
-                        this.props.action(respData)
+                        this.props.action(respData, address)
                     })
+
             })
+
             .catch(error => console.error('Error', error));
     };
 
@@ -51,7 +55,12 @@ export default class LocationSearchInput extends React.Component {
                             })}
                         />
                         <div className="autocomplete-dropdown-container current__dropdown">
-                            {loading && <div>Loading...</div>}
+                            {loading && <div className="current__loading">
+                                Loading...
+                                <div className="current__icon-b ">
+                                    <img src='./loader.png' className="current__icon animate__animated  animate__rotateOut" alt="weather option" />
+                                </div>
+                            </div>}
                             {suggestions.map(suggestion => {
                                 const className = suggestion.active
                                     ? 'suggestion-item--active'
