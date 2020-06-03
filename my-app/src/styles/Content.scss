@@ -15,12 +15,14 @@
     justify-content: center;
     align-items: center;
 }
+
 .weather{
     overflow: hidden;
 box-shadow: 0 0 30px rgba(0, 0, 0, 0.582);
 position: relative;
  width: 950px;
  height: 650px;  
+
  @media screen and (max-width:768px) {
     height: 700px;
   }
@@ -28,5 +30,13 @@ position: relative;
     height: auto;
    overflow-y: visible;
  }
+}
+.sunny{
+    background-color: rgba(99, 136, 185, 0.788);
+}
+.sunny-bg{
+    background: url(../backgroundAssets/bg2.jpg) no-repeat;
+    background-size: cover;
+    background-position-y: top;
 }
 

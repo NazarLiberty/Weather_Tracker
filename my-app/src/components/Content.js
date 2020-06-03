@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../styles/Content.scss'
 import Foreacast from './Forecast'
 import CurrentTime from './Current'
+import ForecastDaily from './ForecastDaily'
 
 export default function Wrapper(props) {
     const [data, setData] = useState(null)
@@ -10,9 +11,10 @@ export default function Wrapper(props) {
     const [humidity, setHumidity] = useState(null)
     const [feel, setFeel] = useState(null)
     const [sunset, setSunset] = useState(null)
-    const [daily, setDaily] = useState(null)
+    const [hourly, setHourly] = useState(null)
     const [current, setCurrent] = useState(null)
     const [address, setAddress] = useState('')
+    const [activeTab, setActiveTab] = useState(false)
     function actionGetData(data, address) {
         setLoader(false)
         setData(data)
@@ -21,7 +23,7 @@ export default function Wrapper(props) {
         setHumidity(data.current.humidity)
         setSunset(data.current.sunset)
         setFeel(data.current.feels_like)
-        setDaily(data.daily)
+        setHourly(data.hourly)
         setCurrent(data.current)
         setAddress(address)
 
@@ -29,9 +31,15 @@ export default function Wrapper(props) {
     function actionLoader() {
         setLoader(true)
     }
+    function actionChangeTab() {
+        setActiveTab(!activeTab)
+    }
     return <div className="wrapper">
         <div className="weather">
+
             <CurrentTime
+                actionChangeTab={actionChangeTab}
+                activeTab={activeTab}
                 address={address}
                 setLoader={actionLoader}
                 loader={loader}
@@ -42,10 +50,14 @@ export default function Wrapper(props) {
                 sunset={setTime(sunset).hours + ":" + setTime(sunset).minutes} feel={Math.round(feel - 273.15)}
             />
             <Foreacast
+                activeTab={activeTab}
                 loader={loader}
-                dataDaily={daily}
                 status={data}
                 current={current} />
+            {hourly && <ForecastDaily
+                activeTab={activeTab}
+                hours={hourly}
+            />}
         </div>
     </div>
 

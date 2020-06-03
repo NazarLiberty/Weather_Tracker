@@ -1,13 +1,15 @@
 import React from 'react';
 import '../styles/Forecast.scss'
+import '../styles/Content.scss'
 import { setTime } from './Content'
 
 export default function Forecast(props) {
     let week = [];
     let elClass = 'forecast'
-    if (props.dataDaily) {
-        elClass += ' forecast--active'
-        props.dataDaily.map((e, i) => {
+    if (props.status) {
+        if (!props.activeTab)
+            elClass += ' forecast--active'
+        props.status.daily.map((e, i) => {
             if (!props.loader) {
                 if (i > 0 && i < 7) week.push(
                     <ForecastWeek
@@ -36,7 +38,7 @@ export default function Forecast(props) {
 function ForecastToday(props) {
     return <div className="forecast__today">
         <div className="forecast__icon forecast__icon-b--today">
-            <img src={"http://openweathermap.org/img/wn/" + props.icon + "@2x.png"} className="forecast__icon" alt="weather" />
+            <img src={"https://openweathermap.org/img/wn/" + props.icon + "@2x.png"} className="forecast__icon" alt="weather" />
         </div>
         <div className="forecast__today-group">
             <div className="forecast__day forecast__day--today">

@@ -12,15 +12,20 @@ bottom: 0px;
     height: 33%;
  }
 @media screen and (max-width:578px) {
-    position: static;
+    display: none;
     transform: translateX(550px) translateY(0px);
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
   }
-  &--active{
+  &--active{   
     transform: translate(0px);
-}
+    @media screen and (max-width:578px){
+      display: flex;
+    position: static;
+    }
+  }
+
   &__today{
       justify-content: center;
       display: flex;

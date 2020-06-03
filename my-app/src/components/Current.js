@@ -2,16 +2,24 @@ import React, { useState } from 'react';
 import '../styles/Current.scss'
 import LocationSearchInput from './Autoselect';
 import { setTime } from './Content'
+import '../styles/Content.scss'
 
 export default function CurrentTime(props) {
     const [unix, setUnix] = useState(Date.now() / 1000)
+    function actionChangeTab() {
+        props.actionChangeTab()
+    }
     setInterval(function () {
         setUnix(Date.now() / 1000)
     }, 1000)
     function getData(data, address) {
         props.action(data, address)
     }
-    return <div className="current">
+    return <div className="current sunny-bg">
+        {props.status && <Tabs
+            activeTab={props.activeTab}
+            action={actionChangeTab}
+        />}
         <div className="current__info-container">
             <div className="current__time">
                 <p className="current__timestamp"> {setTime(unix).hours}:{setTime(unix).minutes}<span className="current__seconds">:{setTime(unix).seconds} </span></p>
@@ -51,5 +59,22 @@ function CurrentInfoItem(props) {
             <img src={props.src} className="current__icon" alt="weather option" />
         </div>
         <div className="current__text"> {props.text} {props.condition} </div>
+    </div>
+}
+function Tabs(props) {
+    function changeTab() {
+        props.action()
+    }
+    let tabWeek = "tabs__item";
+    let tabHours = "tabs__item";
+    if (props.activeTab) tabHours += " tabs__item--active"
+    else tabWeek += " tabs__item--active"
+    return <div className="tabs sunny animate__animated  animate__bounceInRight">
+        <div className={tabWeek} onClick={changeTab}>
+            Week
+    </div>
+        <div className={tabHours} onClick={changeTab}>
+            12 Hours
+    </div>
     </div>
 }
