@@ -15,10 +15,25 @@ export default function Wrapper(props) {
     const [current, setCurrent] = useState(null)
     const [address, setAddress] = useState('')
     const [activeTab, setActiveTab] = useState(false)
+    const [theme, setTheme] = useState(null)
+    function themesList() {
+        if (theme === "Fog") return {
+            backgroundImage: "fog-bg",
+            backgroundColor: "fog"
+        }
+        else if (theme === "Rain") return {
+            backgroundImage: "rain-bg",
+            backgroundColor: "rain"
+        }
+        else return {
+            backgroundImage: "sunny-bg",
+            backgroundColor: "sunny"
+        }
+    }
+
     function actionGetData(data, address) {
         setLoader(false)
         setData(data)
-        console.log(data)
         setClouds(data.current.clouds)
         setHumidity(data.current.humidity)
         setSunset(data.current.sunset)
@@ -26,8 +41,9 @@ export default function Wrapper(props) {
         setHourly(data.hourly)
         setCurrent(data.current)
         setAddress(address)
-
+        setTheme(data.current.weather[0].main)
     }
+
     function actionLoader() {
         setLoader(true)
     }
@@ -36,8 +52,8 @@ export default function Wrapper(props) {
     }
     return <div className="wrapper">
         <div className="weather">
-
             <CurrentTime
+                theme={themesList()}
                 actionChangeTab={actionChangeTab}
                 activeTab={activeTab}
                 address={address}
@@ -50,11 +66,14 @@ export default function Wrapper(props) {
                 sunset={setTime(sunset).hours + ":" + setTime(sunset).minutes} feel={Math.round(feel - 273.15)}
             />
             <Foreacast
+                theme={themesList()}
                 activeTab={activeTab}
                 loader={loader}
                 status={data}
                 current={current} />
+
             {hourly && <ForecastDaily
+                theme={themesList()}
                 activeTab={activeTab}
                 hours={hourly}
             />}
@@ -63,6 +82,7 @@ export default function Wrapper(props) {
 
 
 }
+
 
 export function setTime(unix) {
     let timestamp = unix;

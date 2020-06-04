@@ -15,43 +15,51 @@ export default function CurrentTime(props) {
     function getData(data, address) {
         props.action(data, address)
     }
-    return <div className="current sunny-bg">
-        {props.status && <Tabs
-            activeTab={props.activeTab}
-            action={actionChangeTab}
-        />}
-        <div className="current__info-container">
-            <div className="current__time">
-                <p className="current__timestamp"> {setTime(unix).hours}:{setTime(unix).minutes}<span className="current__seconds">:{setTime(unix).seconds} </span></p>
-                <p className="current__day">
-                    {setTime(Date.now() / 1000).fullDate}
-                </p>
-            </div>
-            <div className="current__info ">
-                {props.loader && <div className="current__loading">
-                    Loading...
-                                <div className="current__icon-b ">
-                        <img src='./loader.png' className="current__icon animate__animated  animate__rotateOut" alt="weather option" />
-                    </div>
+    return <>
+        <div className={"current animate__animated animate__fadeIn " + props.theme.backgroundImage}>
+            {props.status &&
+                <Tabs
+                    theme={props.theme}
+                    activeTab={props.activeTab}
+                    action={actionChangeTab}
+                />}
+            <div className="current__info-container">
+                <div className="current__time">
+                    <p className="current__timestamp">
+                        {setTime(unix).hours}:{setTime(unix).minutes}
+                        <span className="current__seconds">:{setTime(unix).seconds} </span>
+                    </p>
+                    <p className="current__day">
+                        {setTime(Date.now() / 1000).fullDate}
+                    </p>
                 </div>
-                }
-                {!props.loader && props.status &&
-                    <>
-                        <CurrentInfoItem src="./humidity.png" condition={props.humidity + "%"} text="humidity is" />
-                        <CurrentInfoItem src="./cloud.png" condition={props.clouds + "%"} text="clouds is " />
-                        <CurrentInfoItem src="./feeling.png" condition={props.feel + " C"} text="feels like " />
-                        <CurrentInfoItem src="./sunset.png" condition={props.sunset} text="sunset is" />
-                    </>}
+                <div className="current__info ">
+                    {props.loader && <div className="current__loading">
+                        Loading...
+                                <div className="current__icon-b ">
+                            <img src='./loader.png'
+                                className="current__icon animate__animated  animate__rotateOut"
+                                alt="weather option" />
+                        </div>
+                    </div>
+                    }
+                    {!props.loader && props.status &&
+                        <>
+                            <CurrentInfoItem src="./humidity.png" condition={props.humidity + "%"} text="humidity is" />
+                            <CurrentInfoItem src="./cloud.png" condition={props.clouds + "%"} text="clouds is " />
+                            <CurrentInfoItem src="./feeling.png" condition={props.feel + " C"} text="feels like " />
+                            <CurrentInfoItem src="./sunset.png" condition={props.sunset} text="sunset is" />
+                        </>}
+                </div>
+            </div>
+            <div className="current__search">
+                <LocationSearchInput action={getData} setLoader={props.setLoader} />
+                <div className="current__address">
+                    {props.address}
+                </div>
             </div>
         </div>
-        <div className="current__search">
-            <LocationSearchInput action={getData} setLoader={props.setLoader} />
-            <div className="current__address">
-                {props.address}
-            </div>
-        </div>
-    </div>
-
+    </>
 }
 function CurrentInfoItem(props) {
     return <div className="current__item animate__animated  animate__bounceInLeft">
@@ -69,7 +77,7 @@ function Tabs(props) {
     let tabHours = "tabs__item";
     if (props.activeTab) tabHours += " tabs__item--active"
     else tabWeek += " tabs__item--active"
-    return <div className="tabs sunny animate__animated  animate__bounceInRight">
+    return <div className={"tabs " + props.theme.backgroundColor + " animate__animated  animate__bounceInRight"}>
         <div className={tabWeek} onClick={changeTab}>
             Week
     </div>

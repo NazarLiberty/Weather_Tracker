@@ -39,4 +39,19 @@ position: relative;
     background-size: cover;
     background-position-y: top;
 }
-
+.rain-bg{
+    background-size: cover;
+    background-position-y: center;
+    background-image: url(../backgroundAssets/bg-rain.jpg);
+}
+.rain{
+    background-color: rgba(65, 91, 126, 0.699);
+}
+.fog{
+    background-color: rgba(88, 102, 119, 0.699);
+}
+.fog-bg{
+    background-size: cover;
+    background-position-y: center;
+    background-image: url(../backgroundAssets/bg-fog.jpg);
+}

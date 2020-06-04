@@ -5,7 +5,7 @@ import { setTime } from './Content'
 
 export default function Forecast(props) {
     let week = [];
-    let elClass = 'forecast'
+    let elClass = 'forecast '
     if (props.status) {
         if (!props.activeTab)
             elClass += ' forecast--active'
@@ -26,7 +26,7 @@ export default function Forecast(props) {
 
     }
 
-    return <div className={elClass}>
+    return <div className={elClass + " " + props.theme.backgroundColor}>
         {props.current &&
             <ForecastToday
                 icon={props.current.weather[0].icon}
