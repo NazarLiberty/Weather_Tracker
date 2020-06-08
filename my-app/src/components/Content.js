@@ -17,13 +17,24 @@ export default function Wrapper(props) {
     const [activeTab, setActiveTab] = useState(false)
     const [theme, setTheme] = useState(null)
     function themesList() {
-        if (theme === "Fog") return {
-            backgroundImage: "fog-bg",
-            backgroundColor: "fog"
-        }
+        let atmosphere = ["Mist", "Smoke", "Haze", "Dust", "Fog", "Sand", "Dust", "Ash", "Squall", "Tornado"]
+        let atmosphereCheck = atmosphere.filter(e => theme === e)
+        if (atmosphereCheck.includes(theme))
+            return {
+                backgroundImage: "fog-bg",
+                backgroundColor: "fog"
+            }
         else if (theme === "Rain") return {
             backgroundImage: "rain-bg",
             backgroundColor: "rain"
+        }
+        else if (theme === "Clouds") return {
+            backgroundImage: "clouds-bg",
+            backgroundColor: "clouds"
+        }
+        else if (theme === "Thunderstorm") return {
+            backgroundImage: "thunderstorm-bg",
+            backgroundColor: "thunderstorm"
         }
         else return {
             backgroundImage: "sunny-bg",

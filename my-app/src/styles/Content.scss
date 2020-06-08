@@ -55,3 +55,19 @@ position: relative;
     background-position-y: center;
     background-image: url(../backgroundAssets/bg-fog.jpg);
 }
+.clouds{
+    background-color: rgba(119, 133, 151, 0.699);
+}
+.clouds-bg{
+    background-size: cover;
+    background-position-y: center;
+    background-image: url(../backgroundAssets/bg-clouds.jpg);
+}
+.thunderstorm-bg{
+    background-size: cover;
+    background-position-y: center;
+    background-image: url(../backgroundAssets/bg-thunderstorm.jpg);
+}
+.thunderstorm{
+    background-color: rgba(114, 82, 95, 0.726);
+}
