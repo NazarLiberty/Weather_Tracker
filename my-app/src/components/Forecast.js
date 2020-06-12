@@ -22,6 +22,7 @@ export default function Forecast(props) {
                 else return null
             }
             else return null
+            return null
         })
 
     }

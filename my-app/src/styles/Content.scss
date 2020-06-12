@@ -52,7 +52,7 @@ position: relative;
 }
 .fog-bg{
     background-size: cover;
-    background-position-y: center;
+    background-position-y: top;
     background-image: url(../backgroundAssets/bg-fog.jpg);
 }
 .clouds{
@@ -60,7 +60,7 @@ position: relative;
 }
 .clouds-bg{
     background-size: cover;
-    background-position-y: center;
+    background-position-y: top;
     background-image: url(../backgroundAssets/bg-clouds.jpg);
 }
 .thunderstorm-bg{
