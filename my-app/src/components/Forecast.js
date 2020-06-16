@@ -59,7 +59,7 @@ function ForecastWeek(props) {
                     {props.day}
                 </div>
                 <div className="forecast__icon-b">
-                    <img src={"http://openweathermap.org/img/wn/" + props.icon + "@2x.png"} className="forecast__icon" alt="weather" />
+                    <img src={"https://openweathermap.org/img/wn/" + props.icon + "@2x.png"} className="forecast__icon" alt="weather" />
                 </div>
                 <div className="forecast__temp">
                     {props.temp}°
