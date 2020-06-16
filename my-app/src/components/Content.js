@@ -43,6 +43,7 @@ export default function Wrapper(props) {
     }
 
     function actionGetData(data, address) {
+        console.log(data)
         setLoader(false)
         setData(data)
         setClouds(data.current.clouds)
