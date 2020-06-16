@@ -61,37 +61,39 @@ export default function Wrapper(props) {
     function actionChangeTab() {
         setActiveTab(!activeTab)
     }
-    return <div className="wrapper">
-        <div className="weather">
-            <CurrentTime
-                theme={themesList()}
-                actionChangeTab={actionChangeTab}
-                activeTab={activeTab}
-                address={address}
-                setLoader={actionLoader}
-                loader={loader}
-                status={data}
-                action={actionGetData}
-                clouds={clouds}
-                humidity={humidity}
-                sunset={setTime(sunset).hours + ":" + setTime(sunset).minutes} feel={Math.round(feel - 273.15)}
-            />
-            <Foreacast
-                theme={themesList()}
-                activeTab={activeTab}
-                loader={loader}
-                status={data}
-                current={current} />
+    return <>
+        <div className={"background " + themesList().backgroundImage}></div>
+        <div className="wrapper ">
+            <div className="weather">
+                <CurrentTime
+                    theme={themesList()}
+                    actionChangeTab={actionChangeTab}
+                    activeTab={activeTab}
+                    address={address}
+                    setLoader={actionLoader}
+                    loader={loader}
+                    status={data}
+                    action={actionGetData}
+                    clouds={clouds}
+                    humidity={humidity}
+                    sunset={setTime(sunset).hours + ":" + setTime(sunset).minutes} feel={Math.round(feel - 273.15)}
+                />
+                <Foreacast
+                    theme={themesList()}
+                    activeTab={activeTab}
+                    loader={loader}
+                    status={data}
+                    current={current} />
 
-            {hourly && <ForecastDaily
-                theme={themesList()}
-                activeTab={activeTab}
-                hours={hourly}
-            />}
+                {hourly && <ForecastDaily
+                    theme={themesList()}
+                    activeTab={activeTab}
+                    hours={hourly}
+                />}
+            </div>
         </div>
-    </div>
 
-
+    </>
 }
 
 

@@ -31,6 +31,9 @@ bottom: 0px;
       flex-wrap: wrap;
       height: 100%;
       width: 27%;
+      @media screen and (max-width:720px) {
+        height: 50%;
+      }
       @media screen and (max-width:578px) {
         width: 60%;
       }
