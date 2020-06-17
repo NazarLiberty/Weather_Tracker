@@ -29,6 +29,7 @@ export default class LocationSearchInput extends React.Component {
                         return respone.json()
                     })
                     .then((respData) => {
+                        document.getElementById('input__search').blur()
                         this.props.action(respData, address)
                     })
 
@@ -48,6 +49,7 @@ export default class LocationSearchInput extends React.Component {
                 {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                     <div>
                         <input
+                            id="input__search"
                             {...getInputProps({
 
                                 placeholder: 'Search Places ...',
