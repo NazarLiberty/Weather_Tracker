@@ -17,9 +17,9 @@
     height: 35%;
     position: absolute;
     bottom: 0px;
-    transform:translateX(100%);
+    left: 150%;
     &--active{
-        transform:translateX(0%);
+        left: 0px;
         @media screen and (max-width:578px) {
             display: flex;
         }

@@ -4,7 +4,7 @@ import '../styles/Content.scss'
 import { setTime } from './Content'
 
 export default function ForecastDaily(props) {
-    let elClass = "forecast-daily"
+    let elClass = "forecast-daily animate__animated animate__fadeInRight"
     if (props.activeTab) elClass += " forecast-daily--active"
     let hoursCollection = []
     for (let i = 1; i <= 12; i++) {
