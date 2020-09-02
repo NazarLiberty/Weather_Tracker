@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import '../styles/Current.scss'
 import LocationSearchInput from './Autoselect';
-import { setTime } from './Content'
-import '../styles/Content.scss'
+import { setTime } from '../utils/setTime'
+
 
 export default function CurrentTime(props) {
     const [unix, setUnix] = useState(Date.now() / 1000)

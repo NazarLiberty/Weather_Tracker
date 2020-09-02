@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.animate__animated.animate__rotateOut{
+    animation-iteration-count: infinite;
+}
+.background{
+    filter: brightness(40%) blur(7px);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+}
+.wrapper{
+    min-height: 100vh;
+    font-family: 'Josefin Sans', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+.weather{
+    overflow: hidden;
+box-shadow: 0 0 30px rgba(0, 0, 0, 0.582);
+position: relative;
+ width: 950px;
+ height: 650px;  
+
+ @media screen and (max-width:768px) {
+    height: 700px;
+  }
+ @media screen and (max-width:578px) {
+    height: auto;
+   overflow-y: visible;
+ }
+}
+.sunny{
+    background-color: rgba(99, 136, 185, 0.788);
+}
+.sunny-bg{
+    background: url(../backgroundAssets/bg2.jpg) no-repeat;
+    background-size: cover;
+    background-position-y: top;
+}
+.rain-bg{
+    background-size: cover;
+    background-position-y: center;
+    background-image: url(../backgroundAssets/bg-rain.jpg);
+}
+.rain{
+    background-color: rgba(65, 91, 126, 0.699);
+}
+.fog{
+    background-color: rgba(88, 102, 119, 0.699);
+}
+.fog-bg{
+    background-size: cover;
+    background-position-y: top;
+    background-image: url(../backgroundAssets/bg-fog.jpg);
+}
+.clouds{
+    background-color: rgba(119, 133, 151, 0.699);
+}
+.clouds-bg{
+  
+    background-size: cover;
+    background-position-y: top;
+    background-image: url(../backgroundAssets/bg-clouds.jpg);
+}
+.thunderstorm-bg{
+    background-size: cover;
+    background-position-y: center;
+    background-image: url(../backgroundAssets/bg-thunderstorm.jpg);
+}
+.thunderstorm{
+    background-color: rgba(114, 82, 95, 0.726);
+}

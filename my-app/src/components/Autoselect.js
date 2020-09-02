@@ -5,7 +5,7 @@ import {
     getLatLng,
 } from 'react-places-autocomplete';
 import "../styles/Autoselect.scss";
-import { apiKey, originUrl } from '../App'
+import { apiKey, originUrl } from './App'
 
 export default class LocationSearchInput extends React.Component {
     constructor(props) {
@@ -63,7 +63,7 @@ export default class LocationSearchInput extends React.Component {
                                     <img src='./loader.png' className="current__icon animate__animated  animate__rotateOut" alt="weather option" />
                                 </div>
                             </div>}
-                            {suggestions.map(suggestion => {
+                            {suggestions.map((suggestion, idx) => {
                                 const className = suggestion.active
                                     ? 'suggestion-item--active'
                                     : 'suggestion-item';
@@ -74,7 +74,7 @@ export default class LocationSearchInput extends React.Component {
                                     }
                                     : { backgroundColor: '#ffffff', cursor: 'pointer', padding: '5px 10px', borderRadius: "10px" };
                                 return (
-                                    <div
+                                    <div key={idx}
                                         {...getSuggestionItemProps(suggestion, {
                                             className,
                                             style,

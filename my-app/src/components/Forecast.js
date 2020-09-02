@@ -1,7 +1,6 @@
 import React from 'react';
 import '../styles/Forecast.scss'
-import '../styles/Content.scss'
-import { setTime } from './Content'
+import { setTime } from '../utils/setTime'
 
 export default function Forecast(props) {
     let week = [];
